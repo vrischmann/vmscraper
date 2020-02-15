@@ -1,0 +1,15 @@
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 3.7923e-05
+go_gc_duration_seconds{quantile="0.25"} 6.2303e-05
+go_gc_duration_seconds{quantile="0.5"} 7.5907e-05
+go_gc_duration_seconds{quantile="0.75"} 9.4557e-05
+go_gc_duration_seconds{quantile="1"} 0.000425165
+go_gc_duration_seconds_sum 0.865499402
+go_gc_duration_seconds_count 9687
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 7
+# HELP go_info Information about the Go environment.
+# TYPE go_info gauge
+go_info{version="go1.12.5"} 1

@@ -1,0 +1,647 @@
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 4.1347e-05
+go_gc_duration_seconds{quantile="0.25"} 6.1525e-05
+go_gc_duration_seconds{quantile="0.5"} 7.4771e-05
+go_gc_duration_seconds{quantile="0.75"} 9.1875e-05
+go_gc_duration_seconds{quantile="1"} 0.000294337
+go_gc_duration_seconds_sum 2.335056025
+go_gc_duration_seconds_count 26464
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 8
+# HELP go_info Information about the Go environment.
+# TYPE go_info gauge
+go_info{version="go1.12.5"} 1
+# HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 2.632344e+06
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated, even if freed.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 5.74206426e+10
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.821977e+06
+# HELP go_memstats_frees_total Total number of frees.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 3.44235228e+08
+# HELP go_memstats_gc_cpu_fraction The fraction of this program's available CPU time used by the GC since the program started.
+# TYPE go_memstats_gc_cpu_fraction gauge
+go_memstats_gc_cpu_fraction 0.00018141891172905234
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 2.377728e+06
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and still in use.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 2.632344e+06
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 6.2251008e+07
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use.
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 3.940352e+06
+# HELP go_memstats_heap_objects Number of allocated objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 15692
+# HELP go_memstats_heap_released_bytes Number of heap bytes released to OS.
+# TYPE go_memstats_heap_released_bytes gauge
+go_memstats_heap_released_bytes 0
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 6.619136e+07
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.5782567301501307e+09
+# HELP go_memstats_lookups_total Total number of pointer lookups.
+# TYPE go_memstats_lookups_total counter
+go_memstats_lookups_total 0
+# HELP go_memstats_mallocs_total Total number of mallocs.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 3.4425092e+08
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 6944
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 16384
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 51264
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 81920
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 4.194304e+06
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 879583
+# HELP go_memstats_stack_inuse_bytes Number of bytes in use by the stack allocator.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 917504
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 917504
+# HELP go_memstats_sys_bytes Number of bytes obtained from system.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 7.2286456e+07
+# HELP go_threads Number of OS threads created.
+# TYPE go_threads gauge
+go_threads 16
+# HELP node_arp_entries ARP entries by device
+# TYPE node_arp_entries gauge
+node_arp_entries{device="br0"} 7
+node_arp_entries{device="wan0"} 1
+# HELP node_boot_time_seconds Node boot time, in unixtime.
+# TYPE node_boot_time_seconds gauge
+node_boot_time_seconds 1.577999651e+09
+# HELP node_context_switches_total Total number of context switches.
+# TYPE node_context_switches_total counter
+node_context_switches_total 1.05037524e+08
+# HELP node_disk_discard_time_seconds_total This is the total number of seconds spent by all discards.
+# TYPE node_disk_discard_time_seconds_total counter
+node_disk_discard_time_seconds_total{device="sda"} 0
+# HELP node_disk_discarded_sectors_total The total number of sectors discarded successfully.
+# TYPE node_disk_discarded_sectors_total counter
+node_disk_discarded_sectors_total{device="sda"} 0
+# HELP node_disk_discards_completed_total The total number of discards completed successfully.
+# TYPE node_disk_discards_completed_total counter
+node_disk_discards_completed_total{device="sda"} 0
+# HELP node_disk_discards_merged_total The total number of discards merged.
+# TYPE node_disk_discards_merged_total counter
+node_disk_discards_merged_total{device="sda"} 0
+# HELP node_disk_io_now The number of I/Os currently in progress.
+# TYPE node_disk_io_now gauge
+node_disk_io_now{device="sda"} 0
+# HELP node_disk_io_time_seconds_total Total seconds spent doing I/Os.
+# TYPE node_disk_io_time_seconds_total counter
+node_disk_io_time_seconds_total{device="sda"} 630.952
+# HELP node_disk_io_time_weighted_seconds_total The weighted # of seconds spent doing I/Os.
+# TYPE node_disk_io_time_weighted_seconds_total counter
+node_disk_io_time_weighted_seconds_total{device="sda"} 20.696
+# HELP node_disk_read_bytes_total The total number of bytes read successfully.
+# TYPE node_disk_read_bytes_total counter
+node_disk_read_bytes_total{device="sda"} 8.3884213248e+10
+# HELP node_disk_read_time_seconds_total The total number of seconds spent by all reads.
+# TYPE node_disk_read_time_seconds_total counter
+node_disk_read_time_seconds_total{device="sda"} 1302.779
+# HELP node_disk_reads_completed_total The total number of reads completed successfully.
+# TYPE node_disk_reads_completed_total counter
+node_disk_reads_completed_total{device="sda"} 1.375853e+06
+# HELP node_disk_reads_merged_total The total number of reads merged.
+# TYPE node_disk_reads_merged_total counter
+node_disk_reads_merged_total{device="sda"} 5443
+# HELP node_disk_write_time_seconds_total This is the total number of seconds spent by all writes.
+# TYPE node_disk_write_time_seconds_total counter
+node_disk_write_time_seconds_total{device="sda"} 137.416
+# HELP node_disk_writes_completed_total The total number of writes completed successfully.
+# TYPE node_disk_writes_completed_total counter
+node_disk_writes_completed_total{device="sda"} 113489
+# HELP node_disk_writes_merged_total The number of writes merged.
+# TYPE node_disk_writes_merged_total counter
+node_disk_writes_merged_total{device="sda"} 88843
+# HELP node_disk_written_bytes_total The total number of bytes written successfully.
+# TYPE node_disk_written_bytes_total counter
+node_disk_written_bytes_total{device="sda"} 1.913675776e+09
+# HELP node_exporter_build_info A metric with a constant '1' value labeled by version, revision, branch, and goversion from which node_exporter was built.
+# TYPE node_exporter_build_info gauge
+node_exporter_build_info{branch="HEAD",goversion="go1.12.5",revision="3db77732e925c08f675d7404a8c46466b2ece83e",version="0.18.1"} 1
+# HELP node_filefd_allocated File descriptor statistics: allocated.
+# TYPE node_filefd_allocated gauge
+node_filefd_allocated 704
+# HELP node_filefd_maximum File descriptor statistics: maximum.
+# TYPE node_filefd_maximum gauge
+node_filefd_maximum 187806
+# HELP node_filesystem_avail_bytes Filesystem space available to non-root users in bytes.
+# TYPE node_filesystem_avail_bytes gauge
+node_filesystem_avail_bytes{device="/dev/sda1",fstype="ext4",mountpoint="/"} 1.3547753472e+10
+node_filesystem_avail_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 1.85290752e+08
+node_filesystem_avail_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+node_filesystem_avail_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 1.9562496e+08
+# HELP node_filesystem_device_error Whether an error occurred while getting statistics for the given device.
+# TYPE node_filesystem_device_error gauge
+node_filesystem_device_error{device="/dev/sda1",fstype="ext4",mountpoint="/"} 0
+node_filesystem_device_error{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 0
+node_filesystem_device_error{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 0
+node_filesystem_device_error{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 0
+# HELP node_filesystem_files Filesystem total file nodes.
+# TYPE node_filesystem_files gauge
+node_filesystem_files{device="/dev/sda1",fstype="ext4",mountpoint="/"} 979200
+node_filesystem_files{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 238803
+node_filesystem_files{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 238803
+node_filesystem_files{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 238803
+# HELP node_filesystem_files_free Filesystem total free file nodes.
+# TYPE node_filesystem_files_free gauge
+node_filesystem_files_free{device="/dev/sda1",fstype="ext4",mountpoint="/"} 935799
+node_filesystem_files_free{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 238384
+node_filesystem_files_free{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 238801
+node_filesystem_files_free{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 238792
+# HELP node_filesystem_free_bytes Filesystem free space in bytes.
+# TYPE node_filesystem_free_bytes gauge
+node_filesystem_free_bytes{device="/dev/sda1",fstype="ext4",mountpoint="/"} 1.3724655616e+10
+node_filesystem_free_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 1.85290752e+08
+node_filesystem_free_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+node_filesystem_free_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 1.9562496e+08
+# HELP node_filesystem_readonly Filesystem read-only status.
+# TYPE node_filesystem_readonly gauge
+node_filesystem_readonly{device="/dev/sda1",fstype="ext4",mountpoint="/"} 0
+node_filesystem_readonly{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 0
+node_filesystem_readonly{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 0
+node_filesystem_readonly{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 0
+# HELP node_filesystem_size_bytes Filesystem size in bytes.
+# TYPE node_filesystem_size_bytes gauge
+node_filesystem_size_bytes{device="/dev/sda1",fstype="ext4",mountpoint="/"} 1.5693914112e+10
+node_filesystem_size_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 1.95629056e+08
+node_filesystem_size_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+node_filesystem_size_bytes{device="tmpfs",fstype="tmpfs",mountpoint="/run/user/0"} 1.9562496e+08
+# HELP node_forks_total Total number of forks.
+# TYPE node_forks_total counter
+node_forks_total 22126
+# HELP node_hwmon_chip_names Annotation metric for human-readable chip names
+# TYPE node_hwmon_chip_names gauge
+node_hwmon_chip_names{chip="0000:00:02_5_0000:03:00_0",chip_name="ath10k_hwmon"} 1
+node_hwmon_chip_names{chip="pci0000:00_0000:00:18_3",chip_name="k10temp"} 1
+node_hwmon_chip_names{chip="pci0000:00_0000:00:18_4",chip_name="fam15h_power"} 1
+# HELP node_hwmon_power_average_interval_seconds Hardware monitor power usage update interval (average_interval)
+# TYPE node_hwmon_power_average_interval_seconds gauge
+node_hwmon_power_average_interval_seconds{chip="pci0000:00_0000:00:18_4",sensor="power1"} 0.01
+# HELP node_hwmon_power_average_watt Hardware monitor for power usage in watts (average)
+# TYPE node_hwmon_power_average_watt gauge
+node_hwmon_power_average_watt{chip="pci0000:00_0000:00:18_4",sensor="power1"} 5.418322
+# HELP node_hwmon_power_crit_watt Hardware monitor for power usage in watts (crit)
+# TYPE node_hwmon_power_crit_watt gauge
+node_hwmon_power_crit_watt{chip="pci0000:00_0000:00:18_4",sensor="power1"} 5.997512
+# HELP node_hwmon_temp_celsius Hardware monitor for temperature (input)
+# TYPE node_hwmon_temp_celsius gauge
+node_hwmon_temp_celsius{chip="0000:00:02_5_0000:03:00_0",sensor="temp1"} 54
+node_hwmon_temp_celsius{chip="pci0000:00_0000:00:18_3",sensor="temp1"} 50.25
+# HELP node_hwmon_temp_crit_celsius Hardware monitor for temperature (crit)
+# TYPE node_hwmon_temp_crit_celsius gauge
+node_hwmon_temp_crit_celsius{chip="pci0000:00_0000:00:18_3",sensor="temp1"} 105
+# HELP node_hwmon_temp_crit_hyst_celsius Hardware monitor for temperature (crit_hyst)
+# TYPE node_hwmon_temp_crit_hyst_celsius gauge
+node_hwmon_temp_crit_hyst_celsius{chip="pci0000:00_0000:00:18_3",sensor="temp1"} 104
+# HELP node_hwmon_temp_max_celsius Hardware monitor for temperature (max)
+# TYPE node_hwmon_temp_max_celsius gauge
+node_hwmon_temp_max_celsius{chip="pci0000:00_0000:00:18_3",sensor="temp1"} 70
+# HELP node_intr_total Total number of interrupts serviced.
+# TYPE node_intr_total counter
+node_intr_total 1.5254272e+08
+# HELP node_load1 1m load average.
+# TYPE node_load1 gauge
+node_load1 0
+# HELP node_load15 15m load average.
+# TYPE node_load15 gauge
+node_load15 0
+# HELP node_load5 5m load average.
+# TYPE node_load5 gauge
+node_load5 0
+# HELP node_netstat_Icmp6_InErrors Statistic Icmp6InErrors.
+# TYPE node_netstat_Icmp6_InErrors untyped
+node_netstat_Icmp6_InErrors 0
+# HELP node_netstat_Icmp6_InMsgs Statistic Icmp6InMsgs.
+# TYPE node_netstat_Icmp6_InMsgs untyped
+node_netstat_Icmp6_InMsgs 20349
+# HELP node_netstat_Icmp6_OutMsgs Statistic Icmp6OutMsgs.
+# TYPE node_netstat_Icmp6_OutMsgs untyped
+node_netstat_Icmp6_OutMsgs 35783
+# HELP node_netstat_Icmp_InErrors Statistic IcmpInErrors.
+# TYPE node_netstat_Icmp_InErrors untyped
+node_netstat_Icmp_InErrors 10
+# HELP node_netstat_Icmp_InMsgs Statistic IcmpInMsgs.
+# TYPE node_netstat_Icmp_InMsgs untyped
+node_netstat_Icmp_InMsgs 46620
+# HELP node_netstat_Icmp_OutMsgs Statistic IcmpOutMsgs.
+# TYPE node_netstat_Icmp_OutMsgs untyped
+node_netstat_Icmp_OutMsgs 157523
+# HELP node_netstat_Ip6_InOctets Statistic Ip6InOctets.
+# TYPE node_netstat_Ip6_InOctets untyped
+node_netstat_Ip6_InOctets 1.29971344e+08
+# HELP node_netstat_Ip6_OutOctets Statistic Ip6OutOctets.
+# TYPE node_netstat_Ip6_OutOctets untyped
+node_netstat_Ip6_OutOctets 3.1577619e+07
+# HELP node_netstat_IpExt_InOctets Statistic IpExtInOctets.
+# TYPE node_netstat_IpExt_InOctets untyped
+node_netstat_IpExt_InOctets 1.29607203893e+11
+# HELP node_netstat_IpExt_OutOctets Statistic IpExtOutOctets.
+# TYPE node_netstat_IpExt_OutOctets untyped
+node_netstat_IpExt_OutOctets 2.58456403416e+11
+# HELP node_netstat_Ip_Forwarding Statistic IpForwarding.
+# TYPE node_netstat_Ip_Forwarding untyped
+node_netstat_Ip_Forwarding 1
+# HELP node_netstat_TcpExt_ListenDrops Statistic TcpExtListenDrops.
+# TYPE node_netstat_TcpExt_ListenDrops untyped
+node_netstat_TcpExt_ListenDrops 0
+# HELP node_netstat_TcpExt_ListenOverflows Statistic TcpExtListenOverflows.
+# TYPE node_netstat_TcpExt_ListenOverflows untyped
+node_netstat_TcpExt_ListenOverflows 0
+# HELP node_netstat_TcpExt_SyncookiesFailed Statistic TcpExtSyncookiesFailed.
+# TYPE node_netstat_TcpExt_SyncookiesFailed untyped
+node_netstat_TcpExt_SyncookiesFailed 0
+# HELP node_netstat_TcpExt_SyncookiesRecv Statistic TcpExtSyncookiesRecv.
+# TYPE node_netstat_TcpExt_SyncookiesRecv untyped
+node_netstat_TcpExt_SyncookiesRecv 0
+# HELP node_netstat_TcpExt_SyncookiesSent Statistic TcpExtSyncookiesSent.
+# TYPE node_netstat_TcpExt_SyncookiesSent untyped
+node_netstat_TcpExt_SyncookiesSent 0
+# HELP node_netstat_TcpExt_TCPSynRetrans Statistic TcpExtTCPSynRetrans.
+# TYPE node_netstat_TcpExt_TCPSynRetrans untyped
+node_netstat_TcpExt_TCPSynRetrans 278
+# HELP node_netstat_Tcp_ActiveOpens Statistic TcpActiveOpens.
+# TYPE node_netstat_Tcp_ActiveOpens untyped
+node_netstat_Tcp_ActiveOpens 27214
+# HELP node_netstat_Tcp_CurrEstab Statistic TcpCurrEstab.
+# TYPE node_netstat_Tcp_CurrEstab untyped
+node_netstat_Tcp_CurrEstab 8
+# HELP node_netstat_Tcp_InErrs Statistic TcpInErrs.
+# TYPE node_netstat_Tcp_InErrs untyped
+node_netstat_Tcp_InErrs 0
+# HELP node_netstat_Tcp_InSegs Statistic TcpInSegs.
+# TYPE node_netstat_Tcp_InSegs untyped
+node_netstat_Tcp_InSegs 789868
+# HELP node_netstat_Tcp_OutSegs Statistic TcpOutSegs.
+# TYPE node_netstat_Tcp_OutSegs untyped
+node_netstat_Tcp_OutSegs 895521
+# HELP node_netstat_Tcp_PassiveOpens Statistic TcpPassiveOpens.
+# TYPE node_netstat_Tcp_PassiveOpens untyped
+node_netstat_Tcp_PassiveOpens 525
+# HELP node_netstat_Tcp_RetransSegs Statistic TcpRetransSegs.
+# TYPE node_netstat_Tcp_RetransSegs untyped
+node_netstat_Tcp_RetransSegs 419
+# HELP node_netstat_Udp6_InDatagrams Statistic Udp6InDatagrams.
+# TYPE node_netstat_Udp6_InDatagrams untyped
+node_netstat_Udp6_InDatagrams 136
+# HELP node_netstat_Udp6_InErrors Statistic Udp6InErrors.
+# TYPE node_netstat_Udp6_InErrors untyped
+node_netstat_Udp6_InErrors 0
+# HELP node_netstat_Udp6_NoPorts Statistic Udp6NoPorts.
+# TYPE node_netstat_Udp6_NoPorts untyped
+node_netstat_Udp6_NoPorts 3
+# HELP node_netstat_Udp6_OutDatagrams Statistic Udp6OutDatagrams.
+# TYPE node_netstat_Udp6_OutDatagrams untyped
+node_netstat_Udp6_OutDatagrams 2285
+# HELP node_netstat_UdpLite6_InErrors Statistic UdpLite6InErrors.
+# TYPE node_netstat_UdpLite6_InErrors untyped
+node_netstat_UdpLite6_InErrors 0
+# HELP node_netstat_UdpLite_InErrors Statistic UdpLiteInErrors.
+# TYPE node_netstat_UdpLite_InErrors untyped
+node_netstat_UdpLite_InErrors 0
+# HELP node_netstat_Udp_InDatagrams Statistic UdpInDatagrams.
+# TYPE node_netstat_Udp_InDatagrams untyped
+node_netstat_Udp_InDatagrams 23634
+# HELP node_netstat_Udp_InErrors Statistic UdpInErrors.
+# TYPE node_netstat_Udp_InErrors untyped
+node_netstat_Udp_InErrors 0
+# HELP node_netstat_Udp_NoPorts Statistic UdpNoPorts.
+# TYPE node_netstat_Udp_NoPorts untyped
+node_netstat_Udp_NoPorts 15
+# HELP node_netstat_Udp_OutDatagrams Statistic UdpOutDatagrams.
+# TYPE node_netstat_Udp_OutDatagrams untyped
+node_netstat_Udp_OutDatagrams 23631
+# HELP node_network_receive_bytes_total Network device statistic receive_bytes.
+# TYPE node_network_receive_bytes_total counter
+node_network_receive_bytes_total{device="br0"} 3.37277524e+09
+node_network_receive_bytes_total{device="lan0"} 2.642552929e+09
+node_network_receive_bytes_total{device="lo"} 5.68706461e+08
+node_network_receive_bytes_total{device="wan0"} 1.29544064003e+11
+node_network_receive_bytes_total{device="wlan0"} 1.103994206e+09
+# HELP node_network_receive_compressed_total Network device statistic receive_compressed.
+# TYPE node_network_receive_compressed_total counter
+node_network_receive_compressed_total{device="br0"} 0
+node_network_receive_compressed_total{device="lan0"} 0
+node_network_receive_compressed_total{device="lo"} 0
+node_network_receive_compressed_total{device="wan0"} 0
+node_network_receive_compressed_total{device="wlan0"} 0
+# HELP node_network_receive_drop_total Network device statistic receive_drop.
+# TYPE node_network_receive_drop_total counter
+node_network_receive_drop_total{device="br0"} 190
+node_network_receive_drop_total{device="lan0"} 0
+node_network_receive_drop_total{device="lo"} 0
+node_network_receive_drop_total{device="wan0"} 17127
+node_network_receive_drop_total{device="wlan0"} 0
+# HELP node_network_receive_errs_total Network device statistic receive_errs.
+# TYPE node_network_receive_errs_total counter
+node_network_receive_errs_total{device="br0"} 0
+node_network_receive_errs_total{device="lan0"} 0
+node_network_receive_errs_total{device="lo"} 0
+node_network_receive_errs_total{device="wan0"} 0
+node_network_receive_errs_total{device="wlan0"} 0
+# HELP node_network_receive_fifo_total Network device statistic receive_fifo.
+# TYPE node_network_receive_fifo_total counter
+node_network_receive_fifo_total{device="br0"} 0
+node_network_receive_fifo_total{device="lan0"} 0
+node_network_receive_fifo_total{device="lo"} 0
+node_network_receive_fifo_total{device="wan0"} 173124
+node_network_receive_fifo_total{device="wlan0"} 0
+# HELP node_network_receive_frame_total Network device statistic receive_frame.
+# TYPE node_network_receive_frame_total counter
+node_network_receive_frame_total{device="br0"} 0
+node_network_receive_frame_total{device="lan0"} 0
+node_network_receive_frame_total{device="lo"} 0
+node_network_receive_frame_total{device="wan0"} 0
+node_network_receive_frame_total{device="wlan0"} 0
+# HELP node_network_receive_multicast_total Network device statistic receive_multicast.
+# TYPE node_network_receive_multicast_total counter
+node_network_receive_multicast_total{device="br0"} 0
+node_network_receive_multicast_total{device="lan0"} 1960
+node_network_receive_multicast_total{device="lo"} 0
+node_network_receive_multicast_total{device="wan0"} 20705
+node_network_receive_multicast_total{device="wlan0"} 0
+# HELP node_network_receive_packets_total Network device statistic receive_packets.
+# TYPE node_network_receive_packets_total counter
+node_network_receive_packets_total{device="br0"} 2.1643235e+07
+node_network_receive_packets_total{device="lan0"} 1.5431277e+07
+node_network_receive_packets_total{device="lo"} 500535
+node_network_receive_packets_total{device="wan0"} 8.975045e+07
+node_network_receive_packets_total{device="wlan0"} 7.263811e+06
+# HELP node_network_transmit_bytes_total Network device statistic transmit_bytes.
+# TYPE node_network_transmit_bytes_total counter
+node_network_transmit_bytes_total{device="br0"} 1.26937792154e+11
+node_network_transmit_bytes_total{device="lan0"} 6.4592019803e+10
+node_network_transmit_bytes_total{device="lo"} 5.68706461e+08
+node_network_transmit_bytes_total{device="wan0"} 3.725522216e+09
+node_network_transmit_bytes_total{device="wlan0"} 6.5671856817e+10
+# HELP node_network_transmit_carrier_total Network device statistic transmit_carrier.
+# TYPE node_network_transmit_carrier_total counter
+node_network_transmit_carrier_total{device="br0"} 0
+node_network_transmit_carrier_total{device="lan0"} 0
+node_network_transmit_carrier_total{device="lo"} 0
+node_network_transmit_carrier_total{device="wan0"} 0
+node_network_transmit_carrier_total{device="wlan0"} 0
+# HELP node_network_transmit_colls_total Network device statistic transmit_colls.
+# TYPE node_network_transmit_colls_total counter
+node_network_transmit_colls_total{device="br0"} 0
+node_network_transmit_colls_total{device="lan0"} 0
+node_network_transmit_colls_total{device="lo"} 0
+node_network_transmit_colls_total{device="wan0"} 0
+node_network_transmit_colls_total{device="wlan0"} 0
+# HELP node_network_transmit_compressed_total Network device statistic transmit_compressed.
+# TYPE node_network_transmit_compressed_total counter
+node_network_transmit_compressed_total{device="br0"} 0
+node_network_transmit_compressed_total{device="lan0"} 0
+node_network_transmit_compressed_total{device="lo"} 0
+node_network_transmit_compressed_total{device="wan0"} 0
+node_network_transmit_compressed_total{device="wlan0"} 0
+# HELP node_network_transmit_drop_total Network device statistic transmit_drop.
+# TYPE node_network_transmit_drop_total counter
+node_network_transmit_drop_total{device="br0"} 0
+node_network_transmit_drop_total{device="lan0"} 0
+node_network_transmit_drop_total{device="lo"} 0
+node_network_transmit_drop_total{device="wan0"} 0
+node_network_transmit_drop_total{device="wlan0"} 0
+# HELP node_network_transmit_errs_total Network device statistic transmit_errs.
+# TYPE node_network_transmit_errs_total counter
+node_network_transmit_errs_total{device="br0"} 0
+node_network_transmit_errs_total{device="lan0"} 0
+node_network_transmit_errs_total{device="lo"} 0
+node_network_transmit_errs_total{device="wan0"} 0
+node_network_transmit_errs_total{device="wlan0"} 0
+# HELP node_network_transmit_fifo_total Network device statistic transmit_fifo.
+# TYPE node_network_transmit_fifo_total counter
+node_network_transmit_fifo_total{device="br0"} 0
+node_network_transmit_fifo_total{device="lan0"} 0
+node_network_transmit_fifo_total{device="lo"} 0
+node_network_transmit_fifo_total{device="wan0"} 0
+node_network_transmit_fifo_total{device="wlan0"} 0
+# HELP node_network_transmit_packets_total Network device statistic transmit_packets.
+# TYPE node_network_transmit_packets_total counter
+node_network_transmit_packets_total{device="br0"} 4.7937062e+07
+node_network_transmit_packets_total{device="lan0"} 4.5970107e+07
+node_network_transmit_packets_total{device="lo"} 500535
+node_network_transmit_packets_total{device="wan0"} 2.3052486e+07
+node_network_transmit_packets_total{device="wlan0"} 4.3444271e+07
+# HELP node_nf_conntrack_entries Number of currently allocated flow entries for connection tracking.
+# TYPE node_nf_conntrack_entries gauge
+node_nf_conntrack_entries 317
+# HELP node_nf_conntrack_entries_limit Maximum size of connection tracking table.
+# TYPE node_nf_conntrack_entries_limit gauge
+node_nf_conntrack_entries_limit 65536
+# HELP node_pressure_cpu_waiting_seconds_total Total time in seconds that processes have waited for CPU time
+# TYPE node_pressure_cpu_waiting_seconds_total counter
+node_pressure_cpu_waiting_seconds_total 563.417724
+# HELP node_pressure_io_stalled_seconds_total Total time in seconds no process could make progress due to IO congestion
+# TYPE node_pressure_io_stalled_seconds_total counter
+node_pressure_io_stalled_seconds_total 220.212009
+# HELP node_pressure_io_waiting_seconds_total Total time in seconds that processes have waited due to IO congestion
+# TYPE node_pressure_io_waiting_seconds_total counter
+node_pressure_io_waiting_seconds_total 230.298096
+# HELP node_pressure_memory_stalled_seconds_total Total time in seconds no process could make progress due to memory congestion
+# TYPE node_pressure_memory_stalled_seconds_total counter
+node_pressure_memory_stalled_seconds_total 15.520487
+# HELP node_pressure_memory_waiting_seconds_total Total time in seconds that processes have waited for memory
+# TYPE node_pressure_memory_waiting_seconds_total counter
+node_pressure_memory_waiting_seconds_total 90.505984
+# HELP node_procs_blocked Number of processes blocked waiting for I/O to complete.
+# TYPE node_procs_blocked gauge
+node_procs_blocked 0
+# HELP node_procs_running Number of processes in runnable state.
+# TYPE node_procs_running gauge
+node_procs_running 6
+# HELP node_scrape_collector_duration_seconds node_exporter: Duration of a collector scrape.
+# TYPE node_scrape_collector_duration_seconds gauge
+node_scrape_collector_duration_seconds{collector="arp"} 0.000403672
+node_scrape_collector_duration_seconds{collector="bcache"} 9.4367e-05
+node_scrape_collector_duration_seconds{collector="bonding"} 0.000116071
+node_scrape_collector_duration_seconds{collector="conntrack"} 0.000404941
+node_scrape_collector_duration_seconds{collector="diskstats"} 0.000355365
+node_scrape_collector_duration_seconds{collector="edac"} 0.000237889
+node_scrape_collector_duration_seconds{collector="filefd"} 0.000225991
+node_scrape_collector_duration_seconds{collector="filesystem"} 0.002014099
+node_scrape_collector_duration_seconds{collector="hwmon"} 0.027777315
+node_scrape_collector_duration_seconds{collector="infiniband"} 0.000166535
+node_scrape_collector_duration_seconds{collector="ipvs"} 0.000137614
+node_scrape_collector_duration_seconds{collector="loadavg"} 0.000327497
+node_scrape_collector_duration_seconds{collector="mdadm"} 0.000142415
+node_scrape_collector_duration_seconds{collector="netdev"} 0.002127179
+node_scrape_collector_duration_seconds{collector="netstat"} 0.007592719
+node_scrape_collector_duration_seconds{collector="nfs"} 0.000170089
+node_scrape_collector_duration_seconds{collector="nfsd"} 0.000128864
+node_scrape_collector_duration_seconds{collector="pressure"} 0.000943001
+node_scrape_collector_duration_seconds{collector="stat"} 0.001193826
+node_scrape_collector_duration_seconds{collector="textfile"} 6.9369e-05
+node_scrape_collector_duration_seconds{collector="time"} 9.5228e-05
+node_scrape_collector_duration_seconds{collector="uname"} 6.2081e-05
+node_scrape_collector_duration_seconds{collector="vmstat"} 0.001183358
+node_scrape_collector_duration_seconds{collector="wifi"} 0.009657866
+node_scrape_collector_duration_seconds{collector="xfs"} 0.000122959
+node_scrape_collector_duration_seconds{collector="zfs"} 0.001155919
+# HELP node_scrape_collector_success node_exporter: Whether a collector succeeded.
+# TYPE node_scrape_collector_success gauge
+node_scrape_collector_success{collector="arp"} 1
+node_scrape_collector_success{collector="bcache"} 1
+node_scrape_collector_success{collector="bonding"} 1
+node_scrape_collector_success{collector="conntrack"} 1
+node_scrape_collector_success{collector="diskstats"} 1
+node_scrape_collector_success{collector="edac"} 1
+node_scrape_collector_success{collector="filefd"} 1
+node_scrape_collector_success{collector="filesystem"} 1
+node_scrape_collector_success{collector="hwmon"} 1
+node_scrape_collector_success{collector="infiniband"} 1
+node_scrape_collector_success{collector="ipvs"} 1
+node_scrape_collector_success{collector="loadavg"} 1
+node_scrape_collector_success{collector="mdadm"} 1
+node_scrape_collector_success{collector="netdev"} 1
+node_scrape_collector_success{collector="netstat"} 1
+node_scrape_collector_success{collector="nfs"} 1
+node_scrape_collector_success{collector="nfsd"} 1
+node_scrape_collector_success{collector="pressure"} 1
+node_scrape_collector_success{collector="stat"} 1
+node_scrape_collector_success{collector="textfile"} 1
+node_scrape_collector_success{collector="time"} 1
+node_scrape_collector_success{collector="uname"} 1
+node_scrape_collector_success{collector="vmstat"} 1
+node_scrape_collector_success{collector="wifi"} 1
+node_scrape_collector_success{collector="xfs"} 1
+node_scrape_collector_success{collector="zfs"} 1
+# HELP node_textfile_scrape_error 1 if there was an error opening or reading a file, 0 otherwise
+# TYPE node_textfile_scrape_error gauge
+node_textfile_scrape_error 0
+# HELP node_time_seconds System time in seconds since epoch (1970).
+# TYPE node_time_seconds gauge
+node_time_seconds 1.5782567378983603e+09
+# HELP node_uname_info Labeled system information as provided by the uname system call.
+# TYPE node_uname_info gauge
+node_uname_info{domainname="(none)",machine="x86_64",nodename="freya",release="5.3.0-0.bpo.2-amd64",sysname="Linux",version="#1 SMP Debian 5.3.9-2~bpo10+1 (2019-11-13)"} 1
+# HELP node_vmstat_oom_kill /proc/vmstat information field oom_kill.
+# TYPE node_vmstat_oom_kill untyped
+node_vmstat_oom_kill 15
+# HELP node_vmstat_pgfault /proc/vmstat information field pgfault.
+# TYPE node_vmstat_pgfault untyped
+node_vmstat_pgfault 8.191705e+06
+# HELP node_vmstat_pgmajfault /proc/vmstat information field pgmajfault.
+# TYPE node_vmstat_pgmajfault untyped
+node_vmstat_pgmajfault 815861
+# HELP node_vmstat_pgpgin /proc/vmstat information field pgpgin.
+# TYPE node_vmstat_pgpgin untyped
+node_vmstat_pgpgin 8.1918177e+07
+# HELP node_vmstat_pgpgout /proc/vmstat information field pgpgout.
+# TYPE node_vmstat_pgpgout untyped
+node_vmstat_pgpgout 1.868824e+06
+# HELP node_vmstat_pswpin /proc/vmstat information field pswpin.
+# TYPE node_vmstat_pswpin untyped
+node_vmstat_pswpin 0
+# HELP node_vmstat_pswpout /proc/vmstat information field pswpout.
+# TYPE node_vmstat_pswpout untyped
+node_vmstat_pswpout 0
+# HELP node_wifi_interface_frequency_hertz The current frequency a WiFi interface is operating at, in hertz.
+# TYPE node_wifi_interface_frequency_hertz gauge
+node_wifi_interface_frequency_hertz{device="wlan0"} 5.18e+09
+# HELP node_wifi_station_beacon_loss_total The total number of times a station has detected a beacon loss.
+# TYPE node_wifi_station_beacon_loss_total counter
+node_wifi_station_beacon_loss_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 0
+node_wifi_station_beacon_loss_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 0
+node_wifi_station_beacon_loss_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 0
+# HELP node_wifi_station_connected_seconds_total The total number of seconds a station has been connected to an access point.
+# TYPE node_wifi_station_connected_seconds_total counter
+node_wifi_station_connected_seconds_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 2943
+node_wifi_station_connected_seconds_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 52063
+node_wifi_station_connected_seconds_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 256997
+# HELP node_wifi_station_inactive_seconds The number of seconds since any wireless activity has occurred on a station.
+# TYPE node_wifi_station_inactive_seconds gauge
+node_wifi_station_inactive_seconds{device="wlan0",mac_address="24:18:1d:de:0d:76"} 56.464
+node_wifi_station_inactive_seconds{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 41.4
+node_wifi_station_inactive_seconds{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 13.82
+# HELP node_wifi_station_receive_bits_per_second The current WiFi receive bitrate of a station, in bits per second.
+# TYPE node_wifi_station_receive_bits_per_second gauge
+node_wifi_station_receive_bits_per_second{device="wlan0",mac_address="24:18:1d:de:0d:76"} 2.4e+07
+node_wifi_station_receive_bits_per_second{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 2.4e+07
+node_wifi_station_receive_bits_per_second{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 8.667e+08
+# HELP node_wifi_station_receive_bytes_total The total number of bytes received by a WiFi station.
+# TYPE node_wifi_station_receive_bytes_total counter
+node_wifi_station_receive_bytes_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 1.98334e+06
+node_wifi_station_receive_bytes_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 228081
+node_wifi_station_receive_bytes_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 2.70914102e+08
+# HELP node_wifi_station_signal_dbm The current WiFi signal strength, in decibel-milliwatts (dBm).
+# TYPE node_wifi_station_signal_dbm gauge
+node_wifi_station_signal_dbm{device="wlan0",mac_address="24:18:1d:de:0d:76"} -57
+node_wifi_station_signal_dbm{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} -49
+node_wifi_station_signal_dbm{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} -53
+# HELP node_wifi_station_transmit_bits_per_second The current WiFi transmit bitrate of a station, in bits per second.
+# TYPE node_wifi_station_transmit_bits_per_second gauge
+node_wifi_station_transmit_bits_per_second{device="wlan0",mac_address="24:18:1d:de:0d:76"} 6.5e+08
+node_wifi_station_transmit_bits_per_second{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 1.733e+08
+node_wifi_station_transmit_bits_per_second{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 8.667e+08
+# HELP node_wifi_station_transmit_bytes_total The total number of bytes transmitted by a WiFi station.
+# TYPE node_wifi_station_transmit_bytes_total counter
+node_wifi_station_transmit_bytes_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 5.761062e+06
+node_wifi_station_transmit_bytes_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 151815
+node_wifi_station_transmit_bytes_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 1.5303719061e+10
+# HELP node_wifi_station_transmit_failed_total The total number of times a station has failed to send a packet.
+# TYPE node_wifi_station_transmit_failed_total counter
+node_wifi_station_transmit_failed_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 12
+node_wifi_station_transmit_failed_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 0
+node_wifi_station_transmit_failed_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 3244
+# HELP node_wifi_station_transmit_retries_total The total number of times a station has had to retry while sending a packet.
+# TYPE node_wifi_station_transmit_retries_total counter
+node_wifi_station_transmit_retries_total{device="wlan0",mac_address="24:18:1d:de:0d:76"} 0
+node_wifi_station_transmit_retries_total{device="wlan0",mac_address="5c:52:1e:14:7a:ec"} 0
+node_wifi_station_transmit_retries_total{device="wlan0",mac_address="90:dd:5d:d4:a7:67"} 0
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 2273.54
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 4096
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 8
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.228224e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.57809193549e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.18509568e+08
+# HELP process_virtual_memory_max_bytes Maximum amount of virtual memory available in bytes.
+# TYPE process_virtual_memory_max_bytes gauge
+process_virtual_memory_max_bytes -1
+# HELP promhttp_metric_handler_requests_in_flight Current number of scrapes being served.
+# TYPE promhttp_metric_handler_requests_in_flight gauge
+promhttp_metric_handler_requests_in_flight 1
+# HELP promhttp_metric_handler_requests_total Total number of scrapes by HTTP status code.
+# TYPE promhttp_metric_handler_requests_total counter
+promhttp_metric_handler_requests_total{code="200"} 32992
+promhttp_metric_handler_requests_total{code="500"} 0
+promhttp_metric_handler_requests_total{code="503"} 0

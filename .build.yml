@@ -1,0 +1,35 @@
+image: debian/buster
+packages:
+  - build-essential
+  - curl
+sources:
+  - https://git.sr.ht/~vrischmann/vmscraper
+  - https://git.sr.ht/~sircmpwn/annotatego
+secrets:
+  - 899cb5e8-734f-414d-8d9b-a1af5dbf9838
+
+tasks:
+  - install_golang: |
+      curl -L -O https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
+      sudo tar -C /usr/local -xzf go1.13.7.linux-amd64.tar.gz
+      echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.buildenv
+  - setup: |
+      cd vmscraper
+      go mod download
+      go mod verify
+  - test: |
+      cd vmscraper
+      go test -v ./...
+
+  - install_annotatego: |
+      cd annotatego
+      go build -v
+  - annotate: |
+      cd vmscraper
+      ~/annotatego/annotatego -v go.rischmann.fr/vmscraper... > annotations.json
+      ~/upload-annotations annotations.json vrischmann vmscraper
+
+triggers:
+  - action: email
+    condition: failure
+    to: "Vincent Rischmann <vincent@rischmann.fr>"
