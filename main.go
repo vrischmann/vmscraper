@@ -185,6 +185,9 @@ func runScrape(args []string) error {
 		if target.Endpoint == "" {
 			log.Fatalf("target endpoint cannot be empty")
 		}
+		if target.Name == "" {
+			log.Fatalf("target name cannot be empty")
+		}
 		if !strings.HasPrefix(target.Endpoint, "http://") {
 			target.Endpoint = "http://" + target.Endpoint
 		}
