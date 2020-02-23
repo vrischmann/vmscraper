@@ -11,8 +11,9 @@ import (
 )
 
 type scraper struct {
-	interval time.Duration
 	endpoint string
+	name     string
+	interval time.Duration
 
 	scrapeBuffer []byte
 	outputBuffer *buffer
@@ -20,9 +21,10 @@ type scraper struct {
 	queue *diskqueue.Q
 }
 
-func newScraper(endpoint string, interval time.Duration, scrapeBuffer []byte, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
+func newScraper(endpoint string, name string, interval time.Duration, scrapeBuffer []byte, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
 	return &scraper{
 		endpoint:     endpoint,
+		name:         name,
 		interval:     interval,
 		scrapeBuffer: scrapeBuffer,
 		outputBuffer: outputBuffer,
@@ -82,8 +84,14 @@ func (s *scraper) run(ctx context.Context) error {
 			// * dump the buffer to disk when necessary
 
 			for i := range metrics {
+				m := metrics[i]
+				m.labels = append(m.labels, promLabel{
+					key:   []byte("target"),
+					value: []byte(s.name),
+				})
+
 				// convert to VictoriaMetrics format
-				convertPromMetricToVM(s.outputBuffer, &metrics[i], scrapeTs)
+				convertPromMetricToVM(s.outputBuffer, &m, scrapeTs)
 
 				// if there's no more room in the output buffer, write to the queue.
 				// the limit is arbitrary, it's possible that the metric would fit in 1kb, but it doesn't really matter.

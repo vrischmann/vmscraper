@@ -99,6 +99,7 @@ func createMemProfile() {
 
 type scrapeTarget struct {
 	Endpoint string `yaml:"endpoint"`
+	Name     string `yaml:"name"`
 
 	ScrapeBufferSize int           `yaml:"scrape_buffer_size"`
 	ScrapeInterval   time.Duration `yaml:"scrape_interval"`
@@ -222,7 +223,7 @@ func runScrape(args []string) error {
 			scrapeBuffer := make([]byte, scrapeBufferSize)
 			outputBuffer := newBuffer(outputBufferSize)
 
-			sc := newScraper(target.Endpoint, interval, scrapeBuffer, outputBuffer, queue)
+			sc := newScraper(target.Endpoint, target.Name, interval, scrapeBuffer, outputBuffer, queue)
 
 			return sc.run(ctx)
 		})

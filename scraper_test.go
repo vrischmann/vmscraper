@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -25,7 +26,7 @@ func TestScraper(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	w := newScraper(srv.URL, 100*time.Millisecond, make([]byte, 1*mb), newBuffer(1*mb), queue)
+	w := newScraper(srv.URL, "myname", 100*time.Millisecond, make([]byte, 1*mb), newBuffer(1*mb), queue)
 	if err := w.run(ctx); err != context.DeadlineExceeded {
 		t.Fatal(err)
 	}
@@ -42,6 +43,26 @@ func TestScraper(t *testing.T) {
 			t.Fatal(err)
 		}
 		total += len(batch)
+
+		// check that the target label is always there
+		for _, entry := range batch {
+			var obj struct {
+				Metric map[string]string
+			}
+
+			err := json.Unmarshal(entry, &obj)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			v, ok := obj.Metric["target"]
+			if !ok {
+				t.Fatalf("label 'target' is not present in metric %+v", obj)
+			}
+			if exp, got := "myname", v; exp != got {
+				t.Fatalf("expected label 'target' to be %q, got %q", exp, got)
+			}
+		}
 	}
 
 	// there's 327 metrics in the testdata file.
