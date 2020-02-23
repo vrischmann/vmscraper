@@ -11,9 +11,7 @@ import (
 )
 
 type scraper struct {
-	endpoint string
-	name     string
-	interval time.Duration
+	target scrapeTarget
 
 	scrapeBuffer []byte
 	outputBuffer *buffer
@@ -21,11 +19,9 @@ type scraper struct {
 	queue *diskqueue.Q
 }
 
-func newScraper(endpoint string, name string, interval time.Duration, scrapeBuffer []byte, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
+func newScraper(target scrapeTarget, scrapeBuffer []byte, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
 	return &scraper{
-		endpoint:     endpoint,
-		name:         name,
-		interval:     interval,
+		target:       target,
 		scrapeBuffer: scrapeBuffer,
 		outputBuffer: outputBuffer,
 		queue:        queue,
@@ -33,7 +29,7 @@ func newScraper(endpoint string, name string, interval time.Duration, scrapeBuff
 }
 
 func (s *scraper) run(ctx context.Context) error {
-	ticker := time.NewTicker(s.interval)
+	ticker := time.NewTicker(s.target.ScrapeInterval)
 
 	var (
 		parser  promParser
@@ -85,10 +81,18 @@ func (s *scraper) run(ctx context.Context) error {
 
 			for i := range metrics {
 				m := metrics[i]
+
+				// add the extra labels
 				m.labels = append(m.labels, promLabel{
 					key:   []byte("target"),
-					value: []byte(s.name),
+					value: []byte(s.target.Name),
 				})
+				for key, value := range s.target.Labels {
+					m.labels = append(m.labels, promLabel{
+						key:   []byte(key),
+						value: []byte(value),
+					})
+				}
 
 				// convert to VictoriaMetrics format
 				convertPromMetricToVM(s.outputBuffer, &m, scrapeTs)
@@ -116,12 +120,12 @@ func (s *scraper) run(ctx context.Context) error {
 func (s *scraper) scrape(dst []byte) ([]byte, int64, error) {
 	ts := time.Now().UnixNano() / 1e6
 
-	code, dst, err := httpClient.Get(dst, s.endpoint)
+	code, dst, err := httpClient.Get(dst, s.target.Endpoint)
 	if err != nil {
-		return dst, ts, fmt.Errorf("unable to get data from %s. err: %v", s.endpoint, err)
+		return dst, ts, fmt.Errorf("unable to get data from %s. err: %v", s.target.Endpoint, err)
 	}
 	if code != http.StatusOK {
-		return dst, ts, fmt.Errorf("bad status code %s when scraping %s. err=: %v", http.StatusText(code), s.endpoint, err)
+		return dst, ts, fmt.Errorf("bad status code %s when scraping %s. err=: %v", http.StatusText(code), s.target.Endpoint, err)
 	}
 
 	return dst, ts, nil

@@ -98,8 +98,9 @@ func createMemProfile() {
 }
 
 type scrapeTarget struct {
-	Endpoint string `yaml:"endpoint"`
-	Name     string `yaml:"name"`
+	Endpoint string            `yaml:"endpoint"`
+	Name     string            `yaml:"name"`
+	Labels   map[string]string `yaml:"labels"`
 
 	ScrapeBufferSize int           `yaml:"scrape_buffer_size"`
 	ScrapeInterval   time.Duration `yaml:"scrape_interval"`
@@ -188,9 +189,8 @@ func runScrape(args []string) error {
 			target.Endpoint = "http://" + target.Endpoint
 		}
 
-		interval := target.ScrapeInterval
-		if interval == 0 {
-			interval = conf.DefaultScrapeInterval
+		if target.ScrapeInterval == 0 {
+			target.ScrapeInterval = conf.DefaultScrapeInterval
 		}
 
 		scrapeBufferSize := target.ScrapeBufferSize
@@ -223,7 +223,7 @@ func runScrape(args []string) error {
 			scrapeBuffer := make([]byte, scrapeBufferSize)
 			outputBuffer := newBuffer(outputBufferSize)
 
-			sc := newScraper(target.Endpoint, target.Name, interval, scrapeBuffer, outputBuffer, queue)
+			sc := newScraper(target, scrapeBuffer, outputBuffer, queue)
 
 			return sc.run(ctx)
 		})

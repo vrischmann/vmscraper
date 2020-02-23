@@ -26,9 +26,25 @@ func TestScraper(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	w := newScraper(srv.URL, "myname", 100*time.Millisecond, make([]byte, 1*mb), newBuffer(1*mb), queue)
+	target := scrapeTarget{
+		Endpoint:       srv.URL,
+		Name:           "myname",
+		Labels:         map[string]string{"foo": "bar", "bar": "baz"},
+		ScrapeInterval: 100 * time.Millisecond,
+	}
+
+	w := newScraper(target, make([]byte, 1*mb), newBuffer(1*mb), queue)
 	if err := w.run(ctx); err != context.DeadlineExceeded {
 		t.Fatal(err)
+	}
+
+	expLabels := []struct {
+		Key   string
+		Value string
+	}{
+		{"target", "myname"},
+		{"foo", "bar"},
+		{"bar", "baz"},
 	}
 
 	//
@@ -44,7 +60,7 @@ func TestScraper(t *testing.T) {
 		}
 		total += len(batch)
 
-		// check that the target label is always there
+		// check that the extra labels are always there
 		for _, entry := range batch {
 			var obj struct {
 				Metric map[string]string
@@ -55,13 +71,16 @@ func TestScraper(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			v, ok := obj.Metric["target"]
-			if !ok {
-				t.Fatalf("label 'target' is not present in metric %+v", obj)
+			for _, expl := range expLabels {
+				v, ok := obj.Metric[expl.Key]
+				if !ok {
+					t.Fatalf("label %s is not present in metric %+v", expl.Key, obj)
+				}
+				if exp, got := expl.Value, v; exp != got {
+					t.Fatalf("expected label %s to be %q, got %q", expl.Key, exp, got)
+				}
 			}
-			if exp, got := "myname", v; exp != got {
-				t.Fatalf("expected label 'target' to be %q, got %q", exp, got)
-			}
+
 		}
 	}
 
