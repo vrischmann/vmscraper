@@ -8,3 +8,4 @@ end
 set -l _commit (git rev-parse --verify HEAD)
 
 go install -ldflags "-X main.gVersion=$_version -X main.gCommit=$_commit"
+go build -ldflags "-X main.gVersion=$_version -X main.gCommit=$_commit"
