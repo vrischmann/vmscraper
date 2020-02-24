@@ -51,6 +51,9 @@ scratch_buffer_size: 1048576
 
 targets:
   - endpoint: "http://localhost:9100/metrics"
+    name: server
+    labels:
+      job: "node_exporter"
     scrape_buffer_size: 1048576
     output_buffer_size: 262144
 ```
