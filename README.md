@@ -51,19 +51,13 @@ scratch_buffer_size: 1048576
 
 targets:
   - endpoint: "http://localhost:9100/metrics"
-    name: server
+    job_name: node_exporter
     labels:
-      job: "node_exporter"
-    scrape_buffer_size: 1048576
+      group: webservers
     output_buffer_size: 262144
 ```
 
-Most parameters are straightforward.
-
-One thing to be aware of is that `export_interval`, `export_batch_size` and `scratch_buffer_size` must be configured correctly so that
-the exporter has a chance to catch up with the scraper.
-
-It is entirely possible to misconfigure the exporter, in that case metrics will accumulate in the queue until `vmscraper` is restarted.
+You can read the detailed schema [here](CONFIGURATION.md).
 
 # Running
 
