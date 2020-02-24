@@ -19,10 +19,9 @@ type scraper struct {
 	queue *diskqueue.Q
 }
 
-func newScraper(target scrapeTarget, scrapeBuffer []byte, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
+func newScraper(target scrapeTarget, outputBuffer *buffer, queue *diskqueue.Q) *scraper {
 	return &scraper{
 		target:       target,
-		scrapeBuffer: scrapeBuffer,
 		outputBuffer: outputBuffer,
 		queue:        queue,
 	}

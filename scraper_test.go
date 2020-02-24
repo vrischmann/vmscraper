@@ -33,7 +33,7 @@ func TestScraper(t *testing.T) {
 		ScrapeInterval: 100 * time.Millisecond,
 	}
 
-	w := newScraper(target, make([]byte, 1*mb), newBuffer(1*mb), queue)
+	w := newScraper(target, newBuffer(64*kb), queue)
 	if err := w.run(ctx); err != context.DeadlineExceeded {
 		t.Fatal(err)
 	}
@@ -88,5 +88,24 @@ func TestScraper(t *testing.T) {
 	const exp = 327 * 3
 	if exp != total {
 		t.Fatalf("expected %d metrics in queue, got %d", exp, total)
+	}
+}
+
+func BenchmarkScrape(b *testing.B) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		http.ServeFile(w, req, "testdata/scraper_testdata.txt")
+	}))
+	defer srv.Close()
+
+	target := scrapeTarget{
+		Endpoint: srv.URL,
+		Name:     "myname",
+	}
+
+	s := newScraper(target, newBuffer(64*kb), nil)
+
+	for i := 0; i < b.N; i++ {
+		tmp, _, _ := s.scrape(s.scrapeBuffer)
+		s.scrapeBuffer = tmp
 	}
 }

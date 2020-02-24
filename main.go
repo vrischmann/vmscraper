@@ -102,10 +102,9 @@ type scrapeTarget struct {
 	Name     string            `yaml:"name"`
 	Labels   map[string]string `yaml:"labels"`
 
-	ScrapeBufferSize int           `yaml:"scrape_buffer_size"`
-	ScrapeInterval   time.Duration `yaml:"scrape_interval"`
+	ScrapeInterval time.Duration `yaml:"scrape_interval"`
 
-	OutputBufferSize int `yaml:"output_buffer_size"`
+	OutputBufferSize int `yaml:"output_buffer_size,default=65536"`
 }
 
 type config struct {
@@ -203,16 +202,8 @@ func runScrape(args []string) error {
 		if target.ScrapeInterval == 0 {
 			target.ScrapeInterval = conf.DefaultScrapeInterval
 		}
-
-		scrapeBufferSize := target.ScrapeBufferSize
-		if scrapeBufferSize <= 8*kb {
-			log.Printf("target: %s, invalid scrape buffer size %d, defaulting to 8Kib", target.Endpoint, scrapeBufferSize)
-			scrapeBufferSize = 8 * kb
-		}
-		outputBufferSize := target.OutputBufferSize
-		if outputBufferSize <= 8*kb {
-			log.Printf("target: %s, invalid output buffer size %d, defaulting to 8Kib", target.Endpoint, outputBufferSize)
-			outputBufferSize = 8 * kb
+		if target.OutputBufferSize <= 8*kb {
+			return errors.New("output buffer size must be >= 8Kib")
 		}
 
 		// There's one queue per target.
@@ -231,10 +222,8 @@ func runScrape(args []string) error {
 		// - the exporter
 
 		eg.Go(func() error {
-			scrapeBuffer := make([]byte, scrapeBufferSize)
-			outputBuffer := newBuffer(outputBufferSize)
-
-			sc := newScraper(target, scrapeBuffer, outputBuffer, queue)
+			outputBuffer := newBuffer(target.OutputBufferSize)
+			sc := newScraper(target, outputBuffer, queue)
 
 			return sc.run(ctx)
 		})
