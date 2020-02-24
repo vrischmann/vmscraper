@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 	"time"
 
@@ -32,6 +33,10 @@ func TestScraper(t *testing.T) {
 		Labels:         map[string]string{"foo": "bar", "bar": "baz"},
 		ScrapeInterval: 100 * time.Millisecond,
 	}
+	targetURL, err := url.Parse(srv.URL)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	w := newScraper(target, newBuffer(64*kb), queue)
 	if err := w.run(ctx); err != context.DeadlineExceeded {
@@ -43,6 +48,7 @@ func TestScraper(t *testing.T) {
 		Value string
 	}{
 		{"job", "myname"},
+		{"instance", targetURL.Hostname()},
 		{"foo", "bar"},
 		{"bar", "baz"},
 	}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"time"
 
 	"go.rischmann.fr/vmscraper/diskqueue"
@@ -29,6 +30,13 @@ func newScraper(target scrapeTarget, outputBuffer *buffer, queue *diskqueue.Q) *
 
 func (s *scraper) run(ctx context.Context) error {
 	ticker := time.NewTicker(s.target.ScrapeInterval)
+
+	// extract the hostname for use as a label
+	u, err := url.Parse(s.target.Endpoint)
+	if err != nil {
+		return err
+	}
+	hostname := u.Hostname()
 
 	var (
 		parser  promParser
@@ -81,11 +89,12 @@ func (s *scraper) run(ctx context.Context) error {
 			for i := range metrics {
 				m := metrics[i]
 
+				// add always defined labels
+				m.labels = append(m.labels,
+					promLabel{key: []byte("job"), value: []byte(s.target.JobName)},
+					promLabel{key: []byte("instance"), value: []byte(hostname)},
+				)
 				// add the extra labels
-				m.labels = append(m.labels, promLabel{
-					key:   []byte("job"),
-					value: []byte(s.target.JobName),
-				})
 				for key, value := range s.target.Labels {
 					m.labels = append(m.labels, promLabel{
 						key:   []byte(key),
