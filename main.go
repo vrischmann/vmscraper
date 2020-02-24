@@ -144,14 +144,9 @@ func runScrape(args []string) error {
 		return err
 	}
 
-	if *scrapeDataDir != "" {
-		conf.DataDir = *scrapeDataDir
+	if conf.DefaultScrapeInterval == 0 {
+		return errors.New("default scrape interval can't be 0")
 	}
-
-	if err := os.MkdirAll(conf.DataDir, 0700); err != nil {
-		return err
-	}
-
 	if conf.ExportEndpoint == "" {
 		return errors.New("export endpoint can't be empty")
 	}
@@ -166,6 +161,19 @@ func runScrape(args []string) error {
 	if conf.ExportBatchSize <= 64 {
 		log.Printf("invalid batch size %d, must be at least 64", conf.ExportBatchSize)
 		conf.ExportBatchSize = 64
+	}
+
+	//
+
+	if *scrapeDataDir != "" {
+		conf.DataDir = *scrapeDataDir
+	}
+	if conf.DataDir == "" {
+		return errors.New("data dir can't be empty")
+	}
+
+	if err := os.MkdirAll(conf.DataDir, 0700); err != nil {
+		return err
 	}
 
 	//
