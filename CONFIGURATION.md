@@ -46,9 +46,9 @@ targets:
 # This should respond with Prometheus formatted metrics.
 endpoint: <url>
 
-# The name of the scrape target,
-# used as a label in the final metrics.
-name: <string>
+# The name of the scrape job, used as a label in the final metrics.
+# Usually this is the name of the app or service which is scraped.
+job_name: <string>
 
 # Extra labels to add to every metrics.
 [ labels: <string>: <string> ... ]
