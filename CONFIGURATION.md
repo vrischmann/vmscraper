@@ -32,7 +32,7 @@ export_endpoint: <url>
 # The size in bytes for the scratch buffer.
 # This should on average be large enough to fit `export_batch_size` entries,
 # where each entry is the average of your metric size.
-[ scratch_buffer_size: <int> | default ) 65536 ]
+[ scratch_buffer_size: <int> | default = 65536 ]
 
 # A list of scrape targets.
 targets:
