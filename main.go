@@ -99,7 +99,7 @@ func createMemProfile() {
 
 type scrapeTarget struct {
 	Endpoint string            `yaml:"endpoint"`
-	JobName  string            `yaml:"name"`
+	JobName  string            `yaml:"job_name"`
 	Labels   map[string]string `yaml:"labels"`
 
 	ScrapeInterval time.Duration `yaml:"scrape_interval"`
