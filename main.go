@@ -104,18 +104,18 @@ type scrapeTarget struct {
 
 	ScrapeInterval time.Duration `yaml:"scrape_interval"`
 
-	OutputBufferSize int `yaml:"output_buffer_size,default=65536"`
+	OutputBufferSize int `yaml:"output_buffer_size"`
 }
 
 type config struct {
-	DefaultScrapeInterval time.Duration `yaml:"default_scrape_interval,default=15s"`
+	DefaultScrapeInterval time.Duration `yaml:"default_scrape_interval"`
 	DataDir               string        `yaml:"data_dir"`
 
 	ExportEndpoint  string        `yaml:"export_endpoint"`
-	ExportInterval  time.Duration `yaml:"export_interval,default=5s"`
-	ExportBatchSize int           `yaml:"export_batch_size,default=512"`
+	ExportInterval  time.Duration `yaml:"export_intervals"`
+	ExportBatchSize int           `yaml:"export_batch_size"`
 
-	ScratchBufferSize int `yaml:"scratch_buffer_size,default=65536"`
+	ScratchBufferSize int `yaml:"scratch_buffer_size"`
 
 	Targets []scrapeTarget `yaml:"targets"`
 }
@@ -143,23 +143,21 @@ func runScrape(args []string) error {
 		return err
 	}
 
-	if conf.DefaultScrapeInterval == 0 {
-		return errors.New("default scrape interval can't be 0")
+	if conf.DefaultScrapeInterval <= 0 {
+		conf.DefaultScrapeInterval = 15 * time.Second
 	}
 	if conf.ExportEndpoint == "" {
 		return errors.New("export endpoint can't be empty")
 	}
 	if conf.ExportInterval <= 0 {
-		return errors.New("export interval can't be 0")
+		conf.ExportInterval = 5 * time.Second
 	}
 
 	if conf.ScratchBufferSize <= 64*kb {
-		log.Printf("invalid scratch buffer size %d, must be at least 64Kib", conf.ScratchBufferSize)
 		conf.ScratchBufferSize = 64 * kb
 	}
-	if conf.ExportBatchSize <= 64 {
-		log.Printf("invalid batch size %d, must be at least 64", conf.ExportBatchSize)
-		conf.ExportBatchSize = 64
+	if conf.ExportBatchSize <= 512 {
+		conf.ExportBatchSize = 512
 	}
 
 	//
@@ -203,7 +201,7 @@ func runScrape(args []string) error {
 			target.ScrapeInterval = conf.DefaultScrapeInterval
 		}
 		if target.OutputBufferSize <= 8*kb {
-			return errors.New("output buffer size must be >= 8Kib")
+			target.OutputBufferSize = 64 * kb
 		}
 
 		// There's one queue per target.
