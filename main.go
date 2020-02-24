@@ -109,16 +109,16 @@ type scrapeTarget struct {
 }
 
 type config struct {
-	DefaultScrapeInterval time.Duration  `yaml:"default_scrape_interval,default=15s"`
-	Targets               []scrapeTarget `yaml:"targets"`
+	DefaultScrapeInterval time.Duration `yaml:"default_scrape_interval,default=15s"`
+	DataDir               string        `yaml:"data_dir"`
 
-	DataDir string `yaml:"data_dir"`
-
-	ExportEndpoint string        `yaml:"export_endpoint"`
-	ExportInterval time.Duration `yaml:"export_interval"`
+	ExportEndpoint  string        `yaml:"export_endpoint"`
+	ExportInterval  time.Duration `yaml:"export_interval"`
+	ExportBatchSize int           `yaml:"export_batch_size"`
 
 	ScratchBufferSize int `yaml:"scratch_buffer_size"`
-	ExportBatchSize   int `yaml:"export_batch_size"`
+
+	Targets []scrapeTarget `yaml:"targets"`
 }
 
 func runScrape(args []string) error {
