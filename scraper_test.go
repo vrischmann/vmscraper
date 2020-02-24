@@ -28,7 +28,7 @@ func TestScraper(t *testing.T) {
 
 	target := scrapeTarget{
 		Endpoint:       srv.URL,
-		Name:           "myname",
+		JobName:        "myname",
 		Labels:         map[string]string{"foo": "bar", "bar": "baz"},
 		ScrapeInterval: 100 * time.Millisecond,
 	}
@@ -42,7 +42,7 @@ func TestScraper(t *testing.T) {
 		Key   string
 		Value string
 	}{
-		{"target", "myname"},
+		{"job", "myname"},
 		{"foo", "bar"},
 		{"bar", "baz"},
 	}
@@ -99,7 +99,7 @@ func BenchmarkScrape(b *testing.B) {
 
 	target := scrapeTarget{
 		Endpoint: srv.URL,
-		Name:     "myname",
+		JobName:  "myname",
 	}
 
 	s := newScraper(target, newBuffer(64*kb), nil)

@@ -99,7 +99,7 @@ func createMemProfile() {
 
 type scrapeTarget struct {
 	Endpoint string            `yaml:"endpoint"`
-	Name     string            `yaml:"name"`
+	JobName  string            `yaml:"name"`
 	Labels   map[string]string `yaml:"labels"`
 
 	ScrapeInterval time.Duration `yaml:"scrape_interval"`
@@ -190,7 +190,7 @@ func runScrape(args []string) error {
 		if target.Endpoint == "" {
 			return errors.New("target endpoint cannot be empty")
 		}
-		if target.Name == "" {
+		if target.JobName == "" {
 			return errors.New("target name cannot be empty")
 		}
 		if !strings.HasPrefix(target.Endpoint, "http://") {

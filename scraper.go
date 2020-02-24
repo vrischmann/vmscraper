@@ -83,8 +83,8 @@ func (s *scraper) run(ctx context.Context) error {
 
 				// add the extra labels
 				m.labels = append(m.labels, promLabel{
-					key:   []byte("target"),
-					value: []byte(s.target.Name),
+					key:   []byte("job"),
+					value: []byte(s.target.JobName),
 				})
 				for key, value := range s.target.Labels {
 					m.labels = append(m.labels, promLabel{
