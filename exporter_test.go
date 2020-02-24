@@ -14,6 +14,13 @@ import (
 	"go.rischmann.fr/vmscraper/diskqueue"
 )
 
+func init() {
+	httpClient = &fasthttp.Client{
+		ReadTimeout:  4 * time.Second,
+		WriteTimeout: 4 * time.Second,
+	}
+}
+
 func BenchmarkExportBatch(b *testing.B) {
 	batch := make(diskqueue.Batch, 8)
 	for i := 0; i < len(batch); i++ {
