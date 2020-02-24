@@ -109,7 +109,7 @@ type scrapeTarget struct {
 }
 
 type config struct {
-	DefaultScrapeInterval time.Duration  `yaml:"default_scrape_interval"`
+	DefaultScrapeInterval time.Duration  `yaml:"default_scrape_interval,default=15s"`
 	Targets               []scrapeTarget `yaml:"targets"`
 
 	DataDir string `yaml:"data_dir"`
