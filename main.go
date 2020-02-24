@@ -113,10 +113,10 @@ type config struct {
 	DataDir               string        `yaml:"data_dir"`
 
 	ExportEndpoint  string        `yaml:"export_endpoint"`
-	ExportInterval  time.Duration `yaml:"export_interval"`
-	ExportBatchSize int           `yaml:"export_batch_size"`
+	ExportInterval  time.Duration `yaml:"export_interval,default=5s"`
+	ExportBatchSize int           `yaml:"export_batch_size,default=512"`
 
-	ScratchBufferSize int `yaml:"scratch_buffer_size"`
+	ScratchBufferSize int `yaml:"scratch_buffer_size,default=65536"`
 
 	Targets []scrapeTarget `yaml:"targets"`
 }
