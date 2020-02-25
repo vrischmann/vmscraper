@@ -16,9 +16,8 @@ The exporter writes metrics to a Victoria Metrics server using the [/api/v1/impo
 
 # Prerequisites
 
-`vmscraper` is only tested on Linux but there's no reason it shouldn't work on other operating systems.
-
-`vmscraper` must have write access to a directory to store metrics.
+`vmscraper` only works on Linux and it must have write access to a directory
+on a filesystem that supports the "punch hole" fallocate mode (see "man 2 fallocate").
 
 # Installation
 
