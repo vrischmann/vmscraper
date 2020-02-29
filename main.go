@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -36,6 +38,7 @@ var (
 	httpClient *fasthttp.Client
 
 	globalFlags = flag.NewFlagSet("root", flag.ExitOnError)
+	listenAddr  = globalFlags.String("pprof-listen-addr", ":7000", "The listen address for the HTTP server")
 
 	cpuProfile = globalFlags.String("cpuprofile", "", "Create a CPU profile")
 	memProfile = globalFlags.String("memprofile", "", "Create a memory profile")
@@ -123,6 +126,9 @@ type config struct {
 func runScrape(args []string) error {
 	ctx, cancel := cancelOnSigterm()
 	defer cancel()
+
+	// Start a webserver for pprof and other things
+	go http.ListenAndServe(*listenAddr, nil)
 
 	//
 
