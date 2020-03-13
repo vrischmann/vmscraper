@@ -1,8 +1,9 @@
 # vmscraper
 
 `vmscraper` is a replacement for the scraper included with [Prometheus](https://prometheus.io/) with a few caveats:
-  * the metrics scraped can only be exported to [Victoria Metrics](https://github.com/VictoriaMetrics/VictoriaMetrics)
-  * most features related to scraping from Prometheus are not included
+
+* the metrics scraped can only be exported to [Victoria Metrics](https://github.com/VictoriaMetrics/VictoriaMetrics)
+* most features related to scraping from Prometheus are not included
 
 `vmscraper` is designed to be extremely simple and with minimal impact on the host running it.
 
