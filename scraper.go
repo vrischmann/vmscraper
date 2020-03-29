@@ -58,13 +58,13 @@ func (s *scraper) run(ctx context.Context) error {
 
 			// scrape
 			var (
-				scrapeTs int64
+				scrapeTS int64
 				err      error
 			)
 
 			scrapeStart := time.Now()
 
-			buffer, scrapeTs, err = s.scrape(buffer)
+			buffer, scrapeTS, err = s.scrape(buffer)
 			if err != nil {
 				return err
 			}
@@ -103,7 +103,7 @@ func (s *scraper) run(ctx context.Context) error {
 				}
 
 				// convert to VictoriaMetrics format
-				convertPromMetricToVM(s.outputBuffer, &m, scrapeTs)
+				convertPromMetricToVM(s.outputBuffer, &m, scrapeTS)
 
 				// if there's no more room in the output buffer, write to the queue.
 				// the limit is arbitrary, it's possible that the metric would fit in 1kb, but it doesn't really matter.
